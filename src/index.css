@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
+  /* Hide default cursor */
+  body {
+    cursor: none;
+  }
+
+  /* 3D Cube Styles for Cursor */
+  .cube {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    transform-style: preserve-3d;
+    pointer-events: none;
+  }
+
+  .face {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .front {
+    transform: rotateY(0deg) translateZ(15px);
+  }
+  .back {
+    transform: rotateY(180deg) translateZ(15px);
+  }
+  .right {
+    transform: rotateY(90deg) translateZ(15px);
+  }
+  .left {
+    transform: rotateY(-90deg) translateZ(15px);
+  }
+  .top {
+    transform: rotateX(90deg) translateZ(15px);
+  }
+  .bottom {
+    transform: rotateX(-90deg) translateZ(15px);
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+
+  /* 3D Mood Button Styles */
+  .mood-button {
+    transition: transform 0.2s ease;
+  }
+
+  .mood-button.happy:hover {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+  }
+  .mood-button.sad:hover {
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
+  }
+  .mood-button.angry:hover {
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.7);
+  }
+  .mood-button.anxious:hover {
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.7);
+  }
+  .mood-button.peaceful:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 127, 0.7);
+  }
+  .mood-button.silly:hover {
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+  }
+  .mood-button.confident:hover {
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  }
+  .mood-button.excited:hover {
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.7);
+  }
+  .mood-button.tired:hover {
+    box-shadow: 0 0 15px rgba(169, 169, 169, 0.7);
+  }
+  .mood-button.curious:hover {
+    box-shadow: 0 0 15px rgba(124, 252, 0, 0.7);
+  }
+
+  /* 3D Flipping Response Card */
+  .response-card {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+  }
+
+  .response-card.flipped {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+
+  .response-card > * {
+    backface-visibility: hidden;
+  }
+
+  /* Pizza Chart Styles */
+  .pizza-chart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pizza-chart {
+    transform: rotate(-90deg); /* Start the pie chart from the top */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Crust-like border on the container */
+  .pizza-chart-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 10px solid #daa520; /* Golden crust color */
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  /* Glowing Animation for Title and Buttons */
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+        0 0 30px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+        0 0 30px rgba(59, 130, 246, 0.3);
+    }
+    100% {
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  /* 3D Grid Background */
+  .grid-background {
+    background: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center;
+    transform-origin: center;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Glowing Animation for Title and Buttons */
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+        0 0 30px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+        0 0 30px rgba(59, 130, 246, 0.3);
+    }
+    100% {
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+  /* Define navy-900 if not in Tailwind config */
+  .from-navy-900 {
+    --tw-gradient-from: #0a1a2f;
+    --tw-gradient-stops: var(--tw-gradient-from),
+      var(--tw-gradient-to, rgba(10, 26, 47, 0));
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@layer utilities {
+  /* 3D Mood Environment styles */
+  .mood-environment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none; /* Allow clicking through to UI elements */
+  }
+
+  /* Glass effect for panels on top of the 3D environment */
+  .glass-panel {
+    @apply backdrop-blur-md bg-gray-900/40 border border-gray-700/50 shadow-lg;
+    transition: all 0.3s ease;
+  }
+
+  .glass-panel:hover {
+    @apply bg-gray-900/50 shadow-xl;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Animation for stars in night scenes */
+  @keyframes twinkle {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  /* Enhanced transition for mood changes */
+  .mood-transition {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
